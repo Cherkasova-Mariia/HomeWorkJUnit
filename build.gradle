@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group = 'guru.qa'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()          // ← обязательно! без этого Gradle не знает, откуда качать
+}
+
+dependencies {
+    testImplementation(
+            'com.codeborne:selenide:7.14.0',
+            'org.junit.jupiter:junit-jupiter:5.11.4'
+    )
+    testRuntimeOnly('org.junit.platform:junit-platform-launcher')
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+}
